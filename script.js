@@ -1,21 +1,21 @@
 const works = [
-  ['CeraVe', 'skincare', 'https://vt.tiktok.com/ZSqr9R3EY/'],
-  ['Eudora', 'cabelos', 'https://vt.tiktok.com/ZSqrHsruD/'],
-  ['Colorama', 'unhas', 'https://vt.tiktok.com/ZSqrHgbYA/'],
-  ['La Roche-Posay', 'skincare', 'https://vt.tiktok.com/ZSqrH3836/'],
-  ['Eudora', 'cabelos', 'https://vt.tiktok.com/ZSqrHG8vx/'],
-  ['Garnier', 'cabelos', 'https://vt.tiktok.com/ZSqr9yQVU/'],
-  ['L’Oréal', 'cabelos', 'https://vt.tiktok.com/ZSqr9U6td/'],
-  ['Garnier', 'cabelos', 'https://vt.tiktok.com/ZSqr9HeFF/'],
-  ['La Roche-Posay', 'skincare', 'https://vt.tiktok.com/ZSqr9Ln7W/'],
-  ['Redken', 'cabelos', 'https://vt.tiktok.com/ZSqr9S2F8/'],
-  ['L’Oréal', 'cabelos', 'https://vt.tiktok.com/ZSqr9HcA3/'],
-  ['Elseve', 'cabelos', 'https://vt.tiktok.com/ZSqr9MRkq/'],
-  ['Vichy', 'skincare', 'https://vt.tiktok.com/ZSqr9A3xW/'],
-  ['Elseve', 'cabelos', 'https://vt.tiktok.com/ZSqr9hxjA/'],
-  ['Matrix', 'cabelos', 'https://vt.tiktok.com/ZSqr9AA2P/'],
-  ['L’Oréal', 'cabelos', 'https://vt.tiktok.com/ZSqr95dby/'],
-  ['Lancôme', 'skincare', 'https://vt.tiktok.com/ZSqr9tnPa/']
+  ['CeraVe', 'skincare', '7681441878293679367'],
+  ['Eudora', 'cabelos', '7681397351919013128'],
+  ['Colorama', 'unhas', '7679068516145777938'],
+  ['La Roche-Posay', 'skincare', '7678741448904445191'],
+  ['Eudora', 'cabelos', '7677595661965004050'],
+  ['Garnier', 'cabelos', '7655448787300912402'],
+  ['Garnier', 'cabelos', '7655446528286297351'],
+  ['Garnier', 'cabelos', '7644689724216446215'],
+  ['La Roche-Posay', 'skincare', '7644361889576766728'],
+  ['Redken', 'cabelos', '7637277379995503890'],
+  ['L’Oréal', 'cabelos', '7636616635637353735'],
+  ['Elseve', 'cabelos', '7629715623739706642'],
+  ['Vichy', 'skincare', '7623156388881075474'],
+  ['Elseve', 'cabelos', '7612640376142269703'],
+  ['Matrix', 'cabelos', '7616336347963395336'],
+  ['L’Oréal', 'cabelos', '7613530977293421832'],
+  ['Lancôme', 'skincare', '7605356193967541511']
 ];
 
 const labels = {
@@ -27,16 +27,21 @@ const labels = {
 const grid = document.getElementById('workGrid');
 
 function render(filter = 'todos') {
-  const filteredWorks = works.filter(
+  const filtered = works.filter(
     work => filter === 'todos' || work[1] === filter
   );
 
-  grid.innerHTML = filteredWorks.map((work, index) => `
+  grid.innerHTML = filtered.map((work, index) => `
     <article class="card video-card">
-      <div class="card-top">
-        <span class="video-number">0${index + 1}</span>
-        <div class="play-icon">▶</div>
-        <span class="brand-name">${work[0]}</span>
+
+      <div class="tiktok-preview">
+        <iframe
+          src="https://www.tiktok.com/player/v1/${work[2]}?description=1&music_info=1"
+          title="${work[0]} - TikTok"
+          loading="lazy"
+          allow="fullscreen"
+          style="width:100%;height:100%;border:none;"
+        ></iframe>
       </div>
 
       <div class="card-body">
@@ -44,15 +49,16 @@ function render(filter = 'todos') {
         <h3>${work[0]}</h3>
         <p>Conteúdo criado para TikTok</p>
 
-        <a 
-          href="${work[2]}" 
-          target="_blank" 
+        <a
+          href="https://www.tiktok.com/@okaymaayara/video/${work[2]}"
+          target="_blank"
           rel="noopener noreferrer"
           class="tiktok-button"
         >
-          ▶ Assistir no TikTok
+          ▶ Abrir no TikTok
         </a>
       </div>
+
     </article>
   `).join('');
 }
