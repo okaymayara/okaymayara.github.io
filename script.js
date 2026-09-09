@@ -4,9 +4,9 @@ const works = [
   ['Colorama', 'unhas', '7679068516145777938'],
   ['La Roche-Posay', 'skincare', '7678741448904445191'],
   ['Eudora', 'cabelos', '7677595661965004050'],
-  ['Garnier', 'cabelos', '7655448787300912402'],
-  ['Garnier', 'cabelos', '7655446528286297351'],
-  ['Garnier', 'cabelos', '7644689724216446215'],
+  ['Garnier', 'skincare', '7655448787300912402'],
+  ['L’Oréal', 'skincare', '7655446528286297351'],
+  ['Garnier', 'skincare', '7644689724216446215'],
   ['La Roche-Posay', 'skincare', '7644361889576766728'],
   ['Redken', 'cabelos', '7637277379995503890'],
   ['L’Oréal', 'cabelos', '7636616635637353735'],
@@ -15,13 +15,14 @@ const works = [
   ['Elseve', 'cabelos', '7612640376142269703'],
   ['Matrix', 'cabelos', '7616336347963395336'],
   ['L’Oréal', 'cabelos', '7613530977293421832'],
-  ['Lancôme', 'skincare', '7605356193967541511']
+  ['Lancôme', 'perfume', '7605356193967541511']
 ];
 
 const labels = {
   cabelos: 'Cabelos',
   skincare: 'Skincare',
-  unhas: 'Unhas'
+  unhas: 'Unhas',
+  perfume: 'Perfume'
 };
 
 const grid = document.getElementById('workGrid');
@@ -31,7 +32,7 @@ function render(filter = 'todos') {
     work => filter === 'todos' || work[1] === filter
   );
 
-  grid.innerHTML = filtered.map((work, index) => `
+  grid.innerHTML = filtered.map(work => `
     <article class="card video-card">
 
       <div class="tiktok-preview">
